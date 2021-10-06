@@ -29,14 +29,13 @@ describe("Post", () => {
     expect(testRenderer).toMatchSnapshot();
   });
 
-  test("renders upvote button", () => {
-    render(
+  test("has upvote button with expected value", () => {
+    const { getByText } = render(
       <Post
         postData={validProps.postData}
         handleUpvote={validProps.handleUpvote}
       />
     );
-    const buttonElement = screen.getByText(/upvote this/i);
-    expect(buttonElement).toBeInTheDocument();
+    expect(getByText("Upvote this")).toHaveValue("test title");
   });
 });
