@@ -26,9 +26,7 @@ const Post = ({ postData, handleUpvote }) => {
       <div className="post-date">Published: {date}</div>
       <h3>Tags:</h3>
       <ul className="post-tags">
-        {tags.map((tag) => (
-          <li key={tag}>{tag}</li>
-        ))}
+        {tags.length > 0 && tags.map((tag) => <li key={tag}>{tag}</li>)}
       </ul>
     </div>
   );
