@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { render, fireEvent } from "@testing-library/react";
 import renderer from "react-test-renderer";
 import Post from "../components/Post";
 
@@ -13,7 +13,7 @@ describe("Post", () => {
       tags: ["test tag1", "test tag2", "test tag3"],
       title: "test title",
     },
-    handleUpvote: () => {},
+    handleUpvote: jest.fn(),
   };
 
   test("renders as expected", () => {
@@ -37,5 +37,17 @@ describe("Post", () => {
       />
     );
     expect(getByText("Upvote this")).toHaveValue("test title");
+  });
+
+  test("register upvote button clicks", () => {
+    const { getByText } = render(
+      <Post
+        postData={validProps.postData}
+        handleUpvote={validProps.handleUpvote}
+      />
+    );
+
+    fireEvent.click(getByText("Upvote this"));
+    expect(validProps.handleUpvote).toBeCalledTimes(1);
   });
 });
