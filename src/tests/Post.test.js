@@ -28,4 +28,15 @@ describe("Post", () => {
 
     expect(testRenderer).toMatchSnapshot();
   });
+
+  test("renders upvote button", () => {
+    render(
+      <Post
+        postData={validProps.postData}
+        handleUpvote={validProps.handleUpvote}
+      />
+    );
+    const buttonElement = screen.getByText(/upvote this/i);
+    expect(buttonElement).toBeInTheDocument();
+  });
 });
