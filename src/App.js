@@ -1,14 +1,11 @@
 import React from "react";
 import "./App.css";
-import PostList from "./components/PostList";
-
-import { posts } from "./data/tempData.json";
+import Page from "./components/Page";
 
 function App() {
   return (
     <div className="App">
-      <h1>My posts</h1>
-      <PostList posts={posts} />
+      <Page />
     </div>
   );
 }
