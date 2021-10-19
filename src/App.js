@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 import PostList from "./components/PostList";
 
-import posts from "./data/posts.json";
+import { posts } from "./data/tempData.json";
 
 function App() {
   return (
