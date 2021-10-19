@@ -1,3 +1,22 @@
+# Demo for FE module
+
+## Plan for Recap lecture
+
+1. Build universal template.
+2. Use universal template for pages:
+
+- Home page
+- Listing page
+- Post page
+- About Me page
+
+3. Build login/registration page.
+4. Build navigation using React Router.
+5. Style template.
+6. Style posts.
+
+Universal template can look like this: https://codepen.io/martynamachowiak/pen/wvWKeNX.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
