@@ -11,7 +11,12 @@
 - About Me page
 
 3. Build login/registration page.
-4. Build navigation using React Router.
+4. Build navigation using React Router with sub-pages:
+
+- home
+- blog
+- about me
+
 5. Style template.
 6. Style posts.
 
