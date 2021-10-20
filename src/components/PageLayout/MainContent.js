@@ -5,7 +5,7 @@ import { posts } from "./../../data/tempData.json";
 
 const Maincontent = () => {
   return (
-    <main>
+    <main className="main">
       Main content goes here
       <h1>My posts</h1>
       <PostList posts={posts} />
