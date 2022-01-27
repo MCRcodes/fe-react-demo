@@ -1,19 +1,14 @@
+import React from "react";
 import "./App.css";
-import Post from "./components/Post";
+import PostList from "./components/PostList";
+
+import posts from "./data/posts.json";
 
 function App() {
-  const post = {
-    title: "Learning React",
-    body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam tempora distinctio sint numquam non, exercitationem veniam quis optio similique odit!",
-    tags: ["react", "manchester", "2021"],
-    author: "May21",
-    date: "27-09-2021",
-    isPublished: true,
-  };
-
   return (
     <div className="App">
-      <Post postData={post} />
+      <h1>My posts</h1>
+      <PostList posts={posts} />
     </div>
   );
 }
