@@ -16,11 +16,6 @@ describe("Post", () => {
     handleUpvote: () => {},
   };
 
-  // TO DO:
-  // - Test list renders correct number of items
-  // - Add event testing for Post (hint: use the fireEvent method from react-testing-library)
-  // Create a new file to test the PostList component (Check it renders as expected with react-test-renderer)
-
   test("renders as expected", () => {
     const testRenderer = renderer
       .create(

@@ -1,70 +1,50 @@
-# Getting Started with Create React App
+# Testing in React Exercise
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Installation, branch switching and commands
 
-## Available Scripts
+### Setting up the repo locally
+In your chosen local directory, clone down the repo and `cd` into the newly made directory:
+`git clone git@github.com:MCRcodes/fe-react-demo.git`
+`cd fe-react-demo`
 
-In the project directory, you can run:
+By default, you will be checked out on the `lecture/react-intro-1` branch. As this exercise is based on the work already in the `exercise/react-testing` branch we need to checkout this branch from the remote, which we can do with:
+`git checkout -t origin/exercise/react-testing`
 
-### `yarn start`
+Now as usual we can install with
+`npm i`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Start the app with
+`npm start`
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Run test suite with
+`npm test`
 
-### `yarn test`
+## Exercises
+The project starts where the lecture demo finishes.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+We have a couple of tests written for the `<Post />` component, we want to cover all code paths that will change the output of the component. *You do not need to change the components to get your tests to pass*
 
-### `yarn build`
+Remember the general thought process for writing a test: **Arrange** - **Act** - **Assert**
+**Arrange** the needed parts:
+- Create an instance of the component under test (use the `render` method),
+- Find the elements you are looking for on the page,
+**Act**
+- Alter the elements if needed (for example, by simulating clicking something in the component). For some of these tests we will only need to check if something has rendered successfully and this step isn't needed
+**Assert**
+- Verify that what you expect to be rendered actually is rendered by using an appropriate matcher (eg `toBeInTheDocument()`)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### Checking your tests are working 
+Once your test is passing, its good practice to make sure it is actually doing its job and it is not passing becasuse of an error in the test. We can do this by temporarily changing the value we expect to be rendered in the component itself (for example by adding some extra characters into the string being searched for) then re-running the test. If it fails, we can deduce that the test is working correctly
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Post component
+Write tests to validate that:
+- The date renders as expected. Is what is rendered on the screen on exact match for the value in `validProps`? (getByText would be a good query to use for this)
+- The title renders as expected
+- Changing the value of `isPublished` displays the text expected in each case (one test for each possibility). What would you expect to see in each case?
+- The correct number of tags is rendered (the `getAllByRole` query - which returns an array of elements matching the given aria role - would be helpful for this). [These docs](https://www.w3.org/TR/wai-aria-1.2/) give an exhaustive list of different roles, search for the term `listitem` on this page
+- Clicking the button fires an event and the handleUpvote function is called.  (hint: use the fireEvent method from react-testing-library)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### PostList component
+- Create a new test file for the PostList component
+- Create an appropriate `validProps` object (look at what the actual component requires and make sure your validProps is structured in the same way)
+- Write a test to validate that the component renders correctly (use `react-test-renderer` for this)
