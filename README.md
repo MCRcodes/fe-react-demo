@@ -4,11 +4,19 @@
 
 ### Setting up the repo locally
 In your chosen local directory, clone down the repo and `cd` into the newly made directory:
-```git clone git@github.com:MCRcodes/fe-react-demo.git```
-```cd fe-react-demo```
+
+```
+git clone git@github.com:MCRcodes/fe-react-demo.git
+```
+
+```
+cd fe-react-demo
+```
 
 By default, you will be checked out on the `lecture/react-intro-1` branch. As this exercise is based on the work already in the `exercise/react-testing` branch we need to checkout this branch from the remote, which we can do with:
-```git checkout -t origin/exercise/react-testing```
+```
+git checkout -t origin/exercise/react-testing
+```
 
 Now as usual we can install with
 ```npm i```
